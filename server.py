@@ -16,7 +16,7 @@ db = client.heroku_j47rhw75
 
 @app.route('/')
 def root():
-    cur = db.web_demo.find()
+    cur = db.web_demo.find({'user':'swapnil'})
     data = json.loads(dumps(cur))
     
     return template('templates/index.tpl', res=data)
@@ -30,7 +30,7 @@ def add_data():
     img = request.forms.get('img')
     name = request.forms.get('name')
 
-    cur = db.web_demo.insert({'img': img, 'name': name})
+    cur = db.web_demo.insert({'img': img, 'name': name,'user':'swapnil'})
 
     redirect('/')
 
